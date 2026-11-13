@@ -25,6 +25,9 @@ jobs:
       - name: Build Debug APK
         run: |
           echo "sdk.dir=$ANDROID_HOME" > local.properties
+          echo "android.useAndroidX=true" >> gradle.properties
+          echo "android.enableJetifier=true" >> gradle.properties
+          echo "android.suppressUnsupportedCompileSdk=34" >> gradle.properties
           gradle assembleDebug
 
       - name: Upload APK Artifact
